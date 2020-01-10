@@ -67,10 +67,10 @@ templateEnv = jinja2.Environment(loader=templateLoader)
 TEMPLATE_FILE = "index.html.j2"
 template = templateEnv.get_template(TEMPLATE_FILE)
 
-config = args.config
+config_path = args.config
 
 # load config yaml file
-with open("config.yml", 'r') as cfg_ymlfile:
+with open(config_path, 'r') as cfg_ymlfile:
     cfg = yaml.load(cfg_ymlfile, Loader=yaml.SafeLoader)
 
 mqttCfg = cfg['mqtt']
@@ -83,8 +83,6 @@ setLight([0,0,0])
 
 # we could also run .subscribe multiple times, but this is not recommended. Therefor we build tuples of (topic, qos)
 tps = [(topic, 0) for topic in topics]
-
-print("Starting MQTT client for host %s, subscribing to topic(s) %s " % (host, tps))
 
 mqttc = mqtt.Client()
 mqttc.on_message = on_message
