@@ -30,4 +30,3 @@
   notify:
     - udevadm reload-rules
     - restart jefd
-
