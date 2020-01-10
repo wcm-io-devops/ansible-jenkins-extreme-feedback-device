@@ -1,0 +1,7 @@
+- name: restart jefd
+  service:
+    name: jefd
+    state: restarted
+
+- name: udevadm reload-rules
+  command: udevadm control --reload-rules

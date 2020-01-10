@@ -1,0 +1,4 @@
+mqtt:
+  host: {{ jefd_mqtt_server_host | default('localhost') }}
+  topics: {{ jefd_mqtt_topics | default([]) }}
+device: {{ jefd_cleware_device | default(None) }}

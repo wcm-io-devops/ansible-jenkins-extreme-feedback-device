@@ -1,0 +1,33 @@
+jefd_pip_packages:
+  - paho-mqtt
+  - jinja2
+  - pyyaml
+
+jefd_os_packages:
+  - git
+  - libhidapi-dev
+  - build-essential
+  - gettext
+  - python3-systemd
+  - python3-setuptools
+  - python3-pip
+  - git
+
+jenkins_feedback_device_docroot: /var/www/html
+
+jefd_owner: jefd
+jefd_group: jefd
+
+jefd_basedir: /opt/jefd
+jefd_script: "{{ jefd_basedir }}/client.py"
+jefd_config: "{{ jefd_basedir }}/config.yml"
+
+# use fixed version to avoid "latest and greatest"
+jefd_clewarecontrol_version: 8b76079d193b4438dc89abac85b3fc99c35e1d08
+jefd_clewarecontrol_basedir: /opt/clewarecontrol
+jefd_mqtt_server_host: localhost
+
+jefd_mqtt_topics:
+  - "jenkins/#"
+
+jefd_cleware_device: 900956

@@ -1,0 +1,6 @@
+dependencies:
+  - name: wcm_io_devops.apache
+    version: 3.1.0-2
+    tags:
+      - apache
+      - dependency

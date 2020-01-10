@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Jenkins extreme feedback device</title>
+	</head>
+	<body>
+	<!-- raw: {{ payload }} -->
+	  <ul>
+        {% for item in payload %}
+        <li>{{ item }} : {{ payload[item] }}</li>
+        {% endfor %}
+	  </ul>
+	</body>
+</html>
