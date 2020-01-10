@@ -1,3 +1,24 @@
+galaxy_info:
+  role_name: jenkins_extreme_feedback_device
+  author: Tobias Richter
+  description: Setups a Jenkins extreme feedback device based upon mqtt and Cleware devices.
+  company: pro!vision
+  issue_tracker_url: https://wcm-io.atlassian.net
+  license: Apache
+  min_ansible_version: 2.7
+
+  platforms:
+    - name: Debian
+      versions:
+        - stretch
+        - buster
+
+  galaxy_tags:
+    - wcmio
+    - jenkins
+    - cleware
+    - mqtt
+
 dependencies:
   - name: wcm_io_devops.apache
     version: 3.1.0-2

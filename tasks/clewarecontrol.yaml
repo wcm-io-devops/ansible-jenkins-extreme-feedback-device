@@ -15,6 +15,8 @@
     shell: make install
     args:
       chdir: "{{ jefd_clewarecontrol_basedir }}"
+    tags:
+      - skip_ansible_lint
 
   when: not _clewarecontrol_stat_result.stat.exists
 
