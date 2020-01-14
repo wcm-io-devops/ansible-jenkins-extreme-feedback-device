@@ -8,13 +8,13 @@
   - name: Clone clewarecontrol repo.
     git:
       repo: "https://github.com/flok99/clewarecontrol.git"
-      dest: "{{ jefd_clewarecontrol_basedir }}"
-      version: "{{ jefd_clewarecontrol_version }}"
+      dest: "{{ jxfd_clewarecontrol_basedir }}"
+      version: "{{ jxfd_clewarecontrol_version }}"
 
   - name: Compile clewarecontrol
     shell: make install
     args:
-      chdir: "{{ jefd_clewarecontrol_basedir }}"
+      chdir: "{{ jxfd_clewarecontrol_basedir }}"
     tags:
       - skip_ansible_lint
 
@@ -23,10 +23,10 @@
 - name: Grant access to usb.
   blockinfile:
     path: /etc/udev/rules.d/10-local.rules
-    marker: "# {mark} ANSIBLE MANAGED BLOCK - jefd"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK - jxfd"
     block: |
-      ATTRS{idVendor}=="0d50", MODE="0660", GROUP="{{ jefd_group }}"
+      ATTRS{idVendor}=="0d50", MODE="0660", GROUP="{{ jxfd_group }}"
     create: yes
   notify:
     - udevadm reload-rules
-    - restart jefd
+    - restart jxfd

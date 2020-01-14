@@ -1,6 +1,6 @@
 - name: Install OS packages.
   package:
-    name: "{{ jefd_os_packages }}"
+    name: "{{ jxfd_os_packages }}"
   tags:
     - packages
     - apt
@@ -8,7 +8,7 @@
 
 - name: Install pip packages.
   pip:
-    name: "{{ jefd_pip_packages }}"
+    name: "{{ jxfd_pip_packages }}"
   tags:
     - packages
     - pip
@@ -16,15 +16,15 @@
 
 - name: Create  group.
   group:
-    name: "{{ jefd_group }}"
+    name: "{{ jxfd_group }}"
   tags:
     - user
     - install
 
 - name: Create user.
   user:
-    name: "{{ jefd_owner }}"
-    group: "{{ jefd_group }}"
+    name: "{{ jxfd_owner }}"
+    group: "{{ jxfd_group }}"
   tags:
     - user
     - install
@@ -35,9 +35,9 @@
 
 - name: Create directory.
   file:
-    path: "{{ jefd_basedir }}"
-    owner: "{{ jefd_owner }}"
-    group: "{{ jefd_group }}"
+    path: "{{ jxfd_basedir }}"
+    owner: "{{ jxfd_owner }}"
+    group: "{{ jxfd_group }}"
     state: directory
   tags:
     - install
@@ -45,8 +45,8 @@
 - name: Change ownership on www dir
   file:
     path: "{{ jenkins_feedback_device_docroot }}"
-    owner: "{{ jefd_owner }}"
-    group: "{{ jefd_group }}"
+    owner: "{{ jxfd_owner }}"
+    group: "{{ jxfd_group }}"
     state: directory
     recurse: yes
   tags:
@@ -55,51 +55,51 @@
 - name: Deploy client script.
   copy:
     src: client.py
-    dest: "{{ jefd_script }}"
-    owner: "{{ jefd_owner }}"
-    group: "{{ jefd_group }}"
+    dest: "{{ jxfd_script }}"
+    owner: "{{ jxfd_owner }}"
+    group: "{{ jxfd_group }}"
   tags:
     - config
   notify:
-    - restart jefd
+    - restart jxfd
 
 - name: Deploy additional files.
   copy:
     src: "{{ item.src }}"
-    dest: "{{ item.dest | default(jefd_basedir) }}"
-    owner: "{{ jefd_owner }}"
-    group: "{{ jefd_group }}"
+    dest: "{{ item.dest | default(jxfd_basedir) }}"
+    owner: "{{ jxfd_owner }}"
+    group: "{{ jxfd_group }}"
   with_items:
     - src: index.html.j2
   tags:
     - files
   notify:
-    - restart jefd
+    - restart jxfd
 
 - name: Deploy config.
   template:
-    src: templates/opt/jefd/config.yml.j2
-    dest: "{{ jefd_config }}"
-    owner: "{{ jefd_owner }}"
-    group: "{{ jefd_group }}"
+    src: templates/opt/jxfd/config.yml.j2
+    dest: "{{ jxfd_config }}"
+    owner: "{{ jxfd_owner }}"
+    group: "{{ jxfd_group }}"
   tags:
     - config
   notify:
-    - restart jefd
+    - restart jxfd
 
 - name: Deploy systemd service file.
   template:
-    src: templates/etc/systemd/system/jefd.service.j2
-    dest: /etc/systemd/system/jefd.service
+    src: templates/etc/systemd/system/jxfd.service.j2
+    dest: /etc/systemd/system/jxfd.service
   register: _service_result
   tags:
     - config
   notify:
-    - restart jefd
+    - restart jxfd
 
 - name: Enable and start service.
   systemd:
-    name: jefd
+    name: jxfd
     enabled: yes
     state: started
     daemon_reload: "{{ _service_result.changed }}"

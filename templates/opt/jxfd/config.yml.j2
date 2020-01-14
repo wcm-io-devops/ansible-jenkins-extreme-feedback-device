@@ -1,0 +1,4 @@
+mqtt:
+  host: {{ jxfd_mqtt_server_host | default('localhost') }}
+  topics: {{ jxfd_mqtt_topics | default([]) }}
+device: {{ jxfd_cleware_device | default(None) }}

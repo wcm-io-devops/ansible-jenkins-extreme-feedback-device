@@ -1,6 +1,6 @@
-- name: restart jefd
+- name: restart jxfd
   service:
-    name: jefd
+    name: jxfd
     state: restarted
 
 - name: udevadm reload-rules
