@@ -30,4 +30,5 @@ jxfd_mqtt_server_host: localhost
 jxfd_mqtt_topics:
   - "jenkins/#"
 
-jxfd_cleware_device: 900956
+# optional set a cleware device
+# jxfd_cleware_device:
