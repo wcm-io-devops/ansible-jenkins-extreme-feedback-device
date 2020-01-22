@@ -13,15 +13,29 @@ def on_message(mqttc, obj, msg):
     yml_payload = yaml.load(payload, Loader=yaml.SafeLoader)
     print("Got message %s" % yml_payload)
 
-    BUILD_RESULT = yml_payload['BUILD_RESULT']
-    PROJECT_URL = yml_payload['BUILD_RESULT']
-    CULPRITS = yml_payload['BUILD_RESULT']
-    BUILD_NUMBER = yml_payload['BUILD_RESULT']
-    JOB_DISPLAY_URL = yml_payload['JOB_DISPLAY_URL']
-    RUN_CHANGES_DISPLAY_URL = yml_payload['RUN_CHANGES_DISPLAY_URL']
+    BUILD_NUMBER = yml_payload.get('BUILD_NUMBER', None)
+    BUILD_RESULT = yml_payload.get('BUILD_RESULT', None)
+    BUILD_RESULT_COLOR = yml_payload.get('BUILD_RESULT_COLOR', '#000000')
+    BUILD_URL = yml_payload.get('BUILD_URL', None)
+    JENKINS_URL = yml_payload.get('JENKINS_URL', None)
+    JOB_BASE_NAME = yml_payload.get('JOB_BASE_NAME', None)
+    JOB_DISPLAY_URL = yml_payload.get('JOB_DISPLAY_URL', None)
+    JOB_NAME = yml_payload.get('JOB_NAME', None)
+    RUN_CHANGES_DISPLAY_URL = yml_payload.get('RUN_CHANGES_DISPLAY_URL', None)
+
+    JOB_BASE_NAME = JOB_BASE_NAME.replace("%2F", "/")
 
     # render the values in the template and write to file!
-    rendered_template = template.render(payload=yml_payload)
+    rendered_template = template.render(
+        BUILD_NUMBER=BUILD_NUMBER,
+        BUILD_RESULT=BUILD_RESULT,
+        BUILD_RESULT_COLOR=BUILD_RESULT_COLOR,
+        BUILD_URL=BUILD_URL,
+        JENKINS_URL=JENKINS_URL,
+        JOB_BASE_NAME=JOB_BASE_NAME,
+        JOB_DISPLAY_URL=JOB_DISPLAY_URL,
+        JOB_NAME=JOB_NAME,
+        RUN_CHANGES_DISPLAY_URL=RUN_CHANGES_DISPLAY_URL)
     f = open("/var/www/html/index.html", "w")
     f.write(rendered_template)
     f.close()

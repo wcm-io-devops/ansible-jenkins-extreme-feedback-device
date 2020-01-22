@@ -14,7 +14,7 @@
     - pip
     - install
 
-- name: Create  group.
+- name: Create group.
   group:
     name: "{{ jxfd_group }}"
   tags:
@@ -63,6 +63,21 @@
   notify:
     - restart jxfd
 
+- name: Deploy html resources.
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest | default(jxfd_basedir) }}"
+    owner: "{{ jxfd_owner }}"
+    group: "{{ jxfd_group }}"
+  with_items:
+    - src: html/
+      dest: /var/www/html/
+  tags:
+    - files
+    - resources
+  notify:
+    - restart jxfd
+
 - name: Deploy additional files.
   copy:
     src: "{{ item.src }}"
@@ -73,6 +88,7 @@
     - src: index.html.j2
   tags:
     - files
+    - template
   notify:
     - restart jxfd
 

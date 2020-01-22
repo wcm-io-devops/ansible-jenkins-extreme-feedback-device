@@ -1,15 +1,96 @@
-<!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8"/>
-		<title>Jenkins extreme feedback device</title>
-	</head>
-	<body>
-	<!-- raw: {{ payload }} -->
-	  <ul>
-        {% for item in payload %}
-        <li>{{ item }} : {{ payload[item] }}</li>
-        {% endfor %}
-	  </ul>
-	</body>
+<!DOCTYPE html>
+<html xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>wcm.io | Jenkins Extreme Feedback Device</title>
+
+    <link rel="shortcut icon" href="https://wcm.io/images/favicon.ico">
+    <link rel="apple-touch-icon" href="https://wcm.io/images/favicon-152.png">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="wcm.io - Jenkins Extreme Feedback Device">
+    <meta http-equiv="content-language" content="en">
+ 
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/docs.css" rel="stylesheet">
+    <link href="css/reflow-skin.css" rel="stylesheet">
+    <link href="css/highlightjs-style-github.min.css" rel="stylesheet">
+
+    <link href="css/site.css" rel="stylesheet">
+</head>
+
+  <body class="page-index project-public_site" data-spy="scroll" data-offset="60" data-target="#toc-scroll-target">
+
+    <div class="container">
+
+    <!-- Masthead
+    ================================================== -->
+
+    <header>
+      <div class="jumbotron subhead">
+        <div class="row" id="banner">
+          <div class="span12">
+            <div class="pull-left">
+              <a href="https://wcm.io/" id="bannerLeft"><h1><img src="img/favicon-16@3x.png"> wcm.io</h1></a>
+              <p class="lead">Jenkins Extreme Feedback Device</p>
+            </div>
+            <div class="pull-right">
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main-body">
+      <div class="row">
+        <div class="span8">
+          <div class="body-content">
+            <section>           
+              <section> 
+                <h3><a href="{{BUILD_URL}}" target="_blank">{{ JOB_BASE_NAME }} #{{ BUILD_NUMBER }}</a> : <font color="{{ BUILD_RESULT_COLOR }}">{{ BUILD_RESULT }}</font></h3>
+                <table border="0" class="bodyTable table table-striped table-hover"> 
+                 <tbody> 
+                  <tr class="a"> 
+                   <td><b>Console</b></td>
+                   <td><a href="{{BUILD_URL}}console" target="_blank">{{BUILD_URL}}console</a></td>
+                  </tr> 
+                  <tr class="b"> 
+                   <td><b>Changes</b></td>
+                   <td><a href="{{BUILD_URL}}changes" target="_blank">{{BUILD_URL}}changes</a></td>
+                  </tr> 
+                  <tr class="a"> 
+                   <td><b>Job name</b></td>
+                   <td>{{ JOB_NAME }}</td>
+                  </tr>
+                 </tbody> 
+                </table> 
+              </section>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+
+    <div class="container subfooter">
+      <div class="row">
+        <div class="span12">
+          <p class="copyright">Copyright ©2014-2020 <a href="https://wcm.io/">wcm.io</a>. All Rights Reserved.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript
+    ================================================== -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/reflow-scroll.js"></script>
+    <script src="js/highlight.min.js"></script>
+
+
+    <script src="js/reflow-skin.js"></script>
+
+  </body>
 </html>
