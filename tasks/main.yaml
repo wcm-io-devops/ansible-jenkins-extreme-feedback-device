@@ -59,7 +59,7 @@
     owner: "{{ jxfd_owner }}"
     group: "{{ jxfd_group }}"
   tags:
-    - config
+    - client
   notify:
     - restart jxfd
 
@@ -109,7 +109,7 @@
     dest: /etc/systemd/system/jxfd.service
   register: _service_result
   tags:
-    - config
+    - service
   notify:
     - restart jxfd
 
