@@ -1,8 +1,10 @@
+# The required pip packages to install
 jxfd_pip_packages:
   - paho-mqtt
   - jinja2
   - pyyaml
 
+# The required os packages to install
 jxfd_os_packages:
   - git
   - libhidapi-dev
@@ -13,22 +15,35 @@ jxfd_os_packages:
   - python3-pip
   - git
 
+# document root for the status page
 jenkins_feedback_device_docroot: /var/www/html
 
+# Owner and group of files and folders
 jxfd_owner: jxfd
-jxfd_group: jxfd
+jxfd_group: "{{ jxfd_owner }}"
 
+# base directory for the client
 jxfd_basedir: /opt/jxfd
+
+# path to the client script
 jxfd_script: "{{ jxfd_basedir }}/client.py"
+
+# path to the configuration
 jxfd_config: "{{ jxfd_basedir }}/config.yml"
 
-# use fixed version to avoid "latest and greatest"
+# fixed version of clewarecontrol repository
 jxfd_clewarecontrol_version: 8b76079d193b4438dc89abac85b3fc99c35e1d08
+
+# Clone directory of the clewarecontrol repository
 jxfd_clewarecontrol_basedir: /opt/clewarecontrol
+
+# The MQTT server to use
 jxfd_mqtt_server_host: localhost
 
+# The MQTT topics to listen to. Listen to all jenkins topics per default.
 jxfd_mqtt_topics:
   - "jenkins/#"
 
-# optional set a cleware device
-# jxfd_cleware_device:
+# optional, specify the cleware device serial number to use.
+# Clewarecontrol will use the first found device by default
+# jxfd_cleware_device_sn:

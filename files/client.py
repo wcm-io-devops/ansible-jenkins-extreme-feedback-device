@@ -25,6 +25,8 @@ def on_message(mqttc, obj, msg):
 
     JOB_BASE_NAME = JOB_BASE_NAME.replace("%2F", "/")
 
+    print("position 2")
+
     # render the values in the template and write to file!
     rendered_template = template.render(
         BUILD_NUMBER=BUILD_NUMBER,
@@ -40,21 +42,24 @@ def on_message(mqttc, obj, msg):
     f.write(rendered_template)
     f.close()
 
+    print("template rendered")
+
     if BUILD_RESULT == "SUCCESS":
         setLight([0, 0, 1])
-    elif BUILD_RESULT == "FAILURE":
+    elif BUILD_RESULT == "FAILURE" or BUILD_RESULT == "STILL FAILING":
         setLight([1, 0, 0])
-    elif BUILD_RESULT == "UNSTABLE":
+    elif BUILD_RESULT == "UNSTABLE" or BUILD_RESULT == "STILL UNSTABLE":
         setLight([0, 1, 0])
 
 
 def setLight(lights):
+    print("setLight: %s" % (lights))
     cmd = "clewarecontrol -c 2"
     # build separate off and on commands to be able to place off before on statements in command line
     lights_off_args = []
     lights_on_args = []
-    if device is not None:
-        cmd += " -d %s" % device
+    if device_sn is not None:
+        cmd += " -d %s" % device_sn
     # build command line
     for idx, status in enumerate(lights):
         curr_light_cmd = "-as %d %d" % (idx, status)
@@ -90,7 +95,7 @@ with open(config_path, 'r') as cfg_ymlfile:
 mqttCfg = cfg['mqtt']
 topics = mqttCfg['topics']
 host = mqttCfg['host']
-device = cfg['device']
+device_sn = cfg['device_sn']
 
 print("Initializing lights")
 setLight([0,0,0])
