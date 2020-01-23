@@ -13,7 +13,7 @@ step from the [wcm.io DevOps Jenkins Pipeline Library](https://github.com/wcm-io
 The role will also setup a webserver which displays details to the Job
 currently displayed by the traffic light:
 
-[<img src="docs/status-page.jpg" width="640" border="1">](docs/status-page.jpg)
+[<img src="docs/status-page.png" width="640" border="1">](docs/status-page.png)
 
 ## MQTT payload
 
