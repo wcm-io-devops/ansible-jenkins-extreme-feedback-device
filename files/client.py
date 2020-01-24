@@ -25,8 +25,6 @@ def on_message(mqttc, obj, msg):
 
     JOB_BASE_NAME = JOB_BASE_NAME.replace("%2F", "/")
 
-    print("position 2")
-
     # render the values in the template and write to file!
     rendered_template = template.render(
         BUILD_NUMBER=BUILD_NUMBER,
@@ -41,8 +39,6 @@ def on_message(mqttc, obj, msg):
     f = open("/var/www/html/index.html", "w")
     f.write(rendered_template)
     f.close()
-
-    print("template rendered")
 
     if BUILD_RESULT == "SUCCESS":
         setLight([0, 0, 1])
