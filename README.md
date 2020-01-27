@@ -25,6 +25,10 @@ The client is connecting via
 (`jxfd_mqtt_server_host`). Depending on the topic and the playload the
 traffic light is controlled.
 
+When you enter the IP or the hostname of the client in your browser you
+will get a status page with information about the current displayed
+build status.
+
 ### Topic
 
 The default topic is `jenkins/${JOB_NAME)}`. So assuming you are
