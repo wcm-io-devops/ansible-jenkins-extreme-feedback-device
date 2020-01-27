@@ -18,7 +18,39 @@ currently displayed by the traffic light:
 
 [<img src="docs/status-page.png" width="640" border="1">](docs/status-page.png)
 
-## MQTT payload
+## How does it work?
+
+The client is connecting via
+[paho-mqtt](https://pypi.org/project/paho-mqtt/) to a MQTT broker
+(`jxfd_mqtt_server_host`). Depending on the topic and the playload the
+traffic light is controlled.
+
+### Topic
+
+The default topic is `jenkins/${JOB_NAME)}`. So assuming you are
+structuring you jobs using Folders and you have a job called mqtt-test
+located in the following structure:
+
+    Jenkins
+      development
+        local
+          mqtt-test    
+
+the topic will be `jenkins/development/local/mqtt-test`.
+
+The client can subscribe to 1 to n MQTT topics (`jxfd_mqtt_topics`). Per
+default the client is subscribing to `jenkins/#`.
+
+The `#` is a multilevel wildcard. So in this case the client will
+subscribe to each jenkins topic. `jenkins/development/local` would only
+subscribe to notifications from jobs in the `development/local` folder
+and below.
+
+See also
+https://www.hivemq.com/blog/mqtt-essentials-part-5-mqtt-topics-best-practices/
+for more information.
+
+### MQTT payload
 
 The client expects a message in the `yaml` format with the following
 example payload:
@@ -37,6 +69,13 @@ example payload:
 :bulb: Have a look at the
 [`notify.mqtt`](https://github.com/wcm-io-devops/jenkins-pipeline-library/blob/master/vars/notify.groovy)
 step for an example for how to build and send this message.
+
+The client will switch on the specific light for the received
+`BUILD_STATUS`.
+
+* red: `FAILURE`, `STILL_FAILING`
+* yellow: `UNSTABLE`, `STILL UNSTABLE`
+* green: `SUCCESS`
 
 ## Clewarecontrol
 
