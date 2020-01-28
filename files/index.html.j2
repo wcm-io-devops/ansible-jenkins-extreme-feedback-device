@@ -22,6 +22,24 @@
 
   <body class="page-index project-public_site" data-spy="scroll" data-offset="60" data-target="#toc-scroll-target">
 
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target="#top-nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="./">wcm.io</a>
+          <div class="nav-collapse collapse" id="top-nav-collapse">
+            <ul class="nav pull-right">
+              <li><a href="https://github.com/wcm-io-devops/ansible-jenkins-extreme-feedback-device" title="GitHub project" class="externalLink">GitHub project</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="container">
 
     <!-- Masthead
@@ -63,6 +81,10 @@
                    <td><b>Job name</b></td>
                    <td>{{ JOB_NAME }}</td>
                   </tr>
+                  <tr class="b">
+                   <td><b>Received</b></td>
+                   <td title="{{ MESSAGE_TIMESTAMP }}">{{ MESSAGE_TIME }}</td>
+                  </tr>
                  </tbody> 
                 </table> 
               </section>
@@ -77,10 +99,12 @@
     <div class="container subfooter">
       <div class="row">
         <div class="span12">
+          <p class="pull-right"><span class="publishDate">Rendered: {{ RENDER_TIME | default('unknown') }}. </span></p>
           <p class="copyright">Copyright ©2014-2020 <a href="https://wcm.io/">wcm.io</a>. All Rights Reserved.</p>
         </div>
       </div>
     </div>
+
 
     <!-- JavaScript
     ================================================== -->
