@@ -13,7 +13,6 @@ jxfd_os_packages:
   - python3-systemd
   - python3-setuptools
   - python3-pip
-  - git
 
 # document root for the status page
 jenkins_feedback_device_docroot: /var/www/html
