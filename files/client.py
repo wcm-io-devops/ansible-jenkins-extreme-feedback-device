@@ -66,7 +66,7 @@ def handle_payload(payload):
     f.write(rendered_template)
     f.close()
 
-    if BUILD_RESULT == "SUCCESS":
+    if BUILD_RESULT == "SUCCESS" or BUILD_RESULT == "FIXED":
         setLight([0, 0, 1])
     elif BUILD_RESULT == "FAILURE" or BUILD_RESULT == "STILL FAILING":
         setLight([1, 0, 0])
