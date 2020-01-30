@@ -22,12 +22,16 @@ currently displayed by the traffic light:
 
 The client is connecting via
 [paho-mqtt](https://pypi.org/project/paho-mqtt/) to a MQTT broker
-(`jxfd_mqtt_server_host`). Depending on the topic and the playload the
+(`jxfd_mqtt_server_host`). Depending on the topic and the payload the
 traffic light is controlled.
 
 When you enter the IP or the hostname of the client in your browser you
 will get a status page with information about the current displayed
 build status.
+
+:bulb: The last received payload is stored in a file called
+`last_payload.yml`, so the last displayed state is kept during events
+like service restarts or reboots.
 
 ### Topic
 
