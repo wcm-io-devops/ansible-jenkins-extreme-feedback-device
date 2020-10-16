@@ -127,7 +127,7 @@ his role was tested with the "USB-TischAmpel" and a RaspberryPI 4.
 
 ## Requirements
 
-This role requires Ansible 2.7 or higher.
+This role requires Ansible 2.8 or higher.
 
 ## Role Variables
 
