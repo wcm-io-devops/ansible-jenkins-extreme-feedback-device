@@ -1,5 +1,5 @@
 [![Ansible Galaxy](https://img.shields.io/badge/galaxy-wcm__io__devops.jenkins__xfd-45885.svg)](https://galaxy.ansible.com/wcm_io_devops/jenkins_xfd)
-[![Build Status](https://travis-ci.org/wcm-io-devops/ansible-jenkins-xfd.svg?branch=master)](https://travis-ci.org/wcm-io-devops/ansible-jenkins-xfd)
+[![Build Status](https://travis-ci.com/wcm-io-devops/ansible-jenkins-xfd.svg?branch=master)](https://travis-ci.com/wcm-io-devops/ansible-jenkins-xfd)
 
 # Jenkins extreme feedback device (jxfd)
 
