@@ -1,3 +1,4 @@
+---
 # The required pip packages to install
 jxfd_pip_packages:
   - paho-mqtt
