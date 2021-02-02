@@ -27,6 +27,7 @@
     marker: "# {mark} ANSIBLE MANAGED BLOCK - jxfd"
     block: |
       ATTRS{idVendor}=="0d50", MODE="0660", GROUP="{{ jxfd_group }}"
+    mode: 644
     create: yes
   notify:
     - udevadm reload-rules
