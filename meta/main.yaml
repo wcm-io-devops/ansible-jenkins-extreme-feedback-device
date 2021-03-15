@@ -1,6 +1,7 @@
 ---
 galaxy_info:
   role_name: jenkins_xfd
+  namespace: wcm_io_devops
   author: Tobias Richter
   description: Setups a Jenkins extreme feedback device based upon mqtt and Cleware devices.
   company: pro!vision
