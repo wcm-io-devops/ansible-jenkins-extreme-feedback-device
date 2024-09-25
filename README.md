@@ -1,6 +1,10 @@
 [![Ansible Galaxy](https://img.shields.io/badge/galaxy-wcm__io__devops.jenkins__xfd-45885.svg)](https://galaxy.ansible.com/wcm_io_devops/jenkins_xfd)
 [![CI](https://github.com/wcm-io-devops/ansible-jenkins-xfd/workflows/CI/badge.svg?branch=master&event=push)](https://github.com/wcm-io-devops/ansible-jenkins-xfd/actions?query=workflow%3ACI)
 
+> :information_source: **Unmaintained**
+>
+> This project is currently not maintained.
+
 # Jenkins extreme feedback device (jxfd)
 
 This role sets up a Pyhton based [MQTT](https://en.wikipedia.org/wiki/MQTT) client which controls a USB
